@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>DB_reader</title>
+    <link rel="stylesheet" href="/static/css/web.css">
+    
+</head>
+<body>
+<div class="container-side">
+    <!-- Сайдбар -->
+    <aside>
+         <img src="/static/images/logo-white.png" alt="Логотип" class="logo"> <!-- Подставьте путь к вашему изображению -->
+        <nav>
+            <ul>
+               <li style=" background-color: #3e518a;"><a href="/">
+                            <img src="/static/images/159619.svg" alt="Логотип" class="menu-logo">Главная</a></li>
+                <li >
+                        <a href="/search">
+                            <img src="/static/images/1093184.svg" alt="Логотип" class="menu-logo">Патенты</a></li>
+                    <li><a href="/config">
+                            <img src="/static/images/155130.svg" alt="Логотип" class="menu-logo">Настройки</a></li>
+                    <li><a href="/history">
+                            <img src="/static/images/7090.svg" alt="Логотип" class="menu-logo">История</a></li>
+                    <li><a href="#"></a></li>
+                    <li><a href="#"> </a></li>
+            </ul>
+        </nav>
+    </aside>
+    
+    <!-- Основная область контента -->
+    <main>
+        <h1>Добро пожаловать!</h1>
+        <p>Это главная страница приложения.</p>
+        <ul class="pagination" id="pagination"></ul>
+        <div id="content"></div>
+        <ul class="pagination" id="pagination"></ul>
+    </main>
+</div>
+<script src="/static/js/search.js"></script>
+</body>
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Поиск</title>
+    <link rel="stylesheet" href="/static/css/web.css">
+
+</head>
+<body>
+    <div class="container-side">
+        <aside>
+            <img src="/static/images/logo-white.png" alt="Логотип" class="logo">
+            <nav>
+                <ul>
+                    <li><a href="/">
+                            <img src="/static/images/159619.svg" alt="Логотип" class="menu-logo">Главная</a></li>
+                    <li ><a href="/search">
+                            <img src="/static/images/1093184.svg" alt="Логотип" class="menu-logo">Патенты</a></li>
+                    <li><a href="/config">
+                            <img src="/static/images/155130.svg" alt="Логотип" class="menu-logo">Настройки</a></li>
+                    <li><a href="/history">
+                            <img src="/static/images/7090.svg" alt="Логотип" class="menu-logo">История</a></li>
+                    <li><a href="#"></a></li>
+                    <li><a href="#"> </a></li>
+                    <a href="#" class="scroll-to-top-button">Наверх</a>
+                </ul>
+            </nav>
+        </aside>
+        <main>
+            <h1>История поиска</h1>
+            <div id="programs-search" class="side-menu">
+                 <div class="result" id="result">
+                    <button type="submit" value="backBtn" id="backBtn">Назад</button>
+                    <div class="search-params">
+                            <h2>Параметры поиска:</h2>
+                     {% if result %}
+                        <p><strong>Наименование</strong> {{ result[-1].name }}   <strong>UQ ID запроса:</strong>  {{ result[-1].uq_id }}</p>
+
+                        {% if result[-1].params.SearchNameString %}
+                        <p>Поиск по номеру: {{ result[-1].params.SearchNameString }} </p>
+                        {% endif %}
+                        
+                        {% if result[-1].params.SelectedType_0 %}
+                        <p>Код документа: {{ result[-1].params.SelectedType_0 }} {{ result[-1].params.SelectedType_1 }}  {{ result[-1].params.SelectedType_2 }}
+                            {{ result[-1].params.SelectedType_3 }} {{ result[-1].params.SelectedType_4 }} {{ result[-1].params.SelectedType_6 }}
+                         {{ result[-1].params.SelectedType_7 }} {{ result[-1].params.SelectedType_8 }} {{ result[-1].params.SelectedType_9 }}
+                         {{ result[-1].params.SelectedType_10 }} {{ result[-1].params.SelectedType_11 }} {{ result[-1].params.SelectedType_12 }}
+                        {{ result[-1].params.SelectedType_13 }} {{ result[-1].params.SelectedType_14 }}</p>
+                        {% endif %}
+
+                        {% if result[-1].params.SelectedReg_0 %}
+                        <p>Страна публикации: {{ result[-1].params.SelectedReg_0 }} {{ result[-1].params.SelectedReg_1 }}</p> 
+                        {% endif %}
+
+                        {% if result[-1].params.DateRangeStartString %}
+                        <p>Дата от: {{ result[-1].params.DateRangeStartString }}</p> 
+                        {% endif %}
+
+                        {% if result[-1].params.DateRangeEndString %}
+                        <p> Дата до: {{ result[-1].params.DateRangeEndString }} </p>
+                        {% endif %}
+                        
+                        {% if result[-1].params.SelectedRegPeriod_0 %}
+                        <p>Набор данных: {{ result[-1].params.SelectedRegPeriod_0 }} {{ result[-1].params.SelectedRegPeriod_1 }}</p>
+                        {% endif %}
+                    {% else %}
+                        <p>Результатов нет.</p>
+                    {% endif %}
+                    </div>
+                    
+                    <ul class="pagination" id="pagination"></ul>
+                    <div id="content">
+                        <input type="hidden" id="raw-results" value="{{ result|tojson|safe }}"/>
+                    </div>
+                    <div id="results-container" data-results="{{ result|tojson|forceescape|safe }}"></div>
+                    <div id="commentModal" class="commentModal">
+                    <div class="modal-content">
+                        <h2>Напишите ваш комментарий:</h2>
+                        <textarea id="commentText" rows="15"></textarea><br>
+                        <div class="btn-block">
+                        <button onclick="sendComment()">Отправить</button>
+                        <button style="margin-left: 15px;" onclick="closeModal()">Закрыть</button>
+                        </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+ <script src="/static/js/search.js"></script>
+</body>
+</html>

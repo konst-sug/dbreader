@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Поиск</title>
+    <link rel="stylesheet" href="/static/css/web.css">
+
+</head>
+<body>
+    <div class="container-side">
+        <aside>
+            <img src="/static/images/logo-white.png" alt="Логотип" class="logo">
+            <nav>
+                <ul>
+                    <li><a href="/">
+                            <img src="/static/images/159619.svg" alt="Логотип" class="menu-logo">Главная</a></li>
+                    <li style=" background-color: #3e518a;"><a href="#">
+                            <img src="/static/images/1093184.svg" alt="Логотип" class="menu-logo">Патенты</a></li>
+                    <li><a href="/config">
+                            <img src="/static/images/155130.svg" alt="Логотип" class="menu-logo">Настройки</a></li>
+                    <li><a href="/history">
+                            <img src="/static/images/7090.svg" alt="Логотип" class="menu-logo">История</a></li>
+                    <li><a href="#"></a></li>
+                    <li><a href="#"> </a></li>
+                    <a href="#" class="scroll-to-top-button">Наверх</a>
+                </ul>
+            </nav>
+        </aside>
+        <main>
+            <h1>Поиск патентов</h1>
+            <div id="programs-search" class="side-menu">
+                <form action="/search" method="POST" id="data">
+                <div class="first-string">
+                    <div class="string-item">
+                        <label>Номер документа</label>
+                        <div class="input-control text">
+                            <div class="input-control text" data-role="input-control">
+                                <input class="input-text" id="SearchNameString" name="SearchNameString" type="text"
+                                    value="">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="string-item">
+                        <label>Дата публикации от</label>
+                        <div class="input-control text ">
+                            <input class="size1-5-0 " data-val="true"
+                                data-val-required="Поле Дата начала периода обязательно для заполнения."
+                                id="date-range-start"
+                                name="DateRangeStartString" type="date" value="2024-05-14">
+                        </div>
+                    </div>
+                    <div class="string-item"> <label>Дата публикации до</label>
+                            <div class="input-control text ">
+                                <input class="size1-5-0" data-val="true"
+                                    data-val-remote="Дата окончания периода должна быть позднее даты начала периода"
+                                    data-val-remote-additionalfields="*.DateRangeEndString,*.DateRangeStartString"
+                                    data-val-remote-url="/Service/PeriodIsInCorrectFormat"
+                                    data-val-required="Поле Дата окончания периода обязательно для заполнения."
+                                    id="data-range-end"
+                                    name="DateRangeEndString" type="date" value="2026-05-14">
+                            </div>
+                    </div>
+                </div>
+                <label>Код вида документа</label>
+                <div class="radio-group">
+                    <label> <input type="checkbox" name="SelectedType" value="A">A</label>
+                    <label> <input type="checkbox" name="SelectedType" value="A1">A1</label>
+                    <label> <input type="checkbox" name="SelectedType" value="A2">A2</label>
+                    <label> <input type="checkbox" name="SelectedType" value="A3">A3</label>
+                    <label> <input type="checkbox" name="SelectedType" value="A4">A4</label>
+                    <label> <input type="checkbox" name="SelectedType" value="A8">A8</label>
+                    <label> <input type="checkbox" name="SelectedType" value="C">C</label>
+                    <label> <input type="checkbox" name="SelectedType" value="C1">C1</label>
+                    <label> <input type="checkbox" name="SelectedType" value="C2">C2</label>
+                    <label> <input type="checkbox" name="SelectedType" value="C3">C3</label>
+                    <label> <input type="checkbox" name="SelectedType" value="C8">C8</label>
+                    <label> <input type="checkbox" name="SelectedType" value="C9">C9</label>
+                    <label> <input type="checkbox" name="SelectedType" value="U1">U1</label>
+                    <label> <input type="checkbox" name="SelectedType" value="U8">U8</label>
+                    <label> <input type="checkbox" name="SelectedType" value="U9">U9</label>
+                </div>
+                <div class="string">         
+                   <div class="string-box">
+                    <label for="AuditedDepartment_BranchId">Набор данных</label>
+                        <div class="radio-group">
+                            <label> <input type="checkbox" name="SelectedRegPeriod" value="RU94">Россия до 1994г</label>
+                            <label> <input type="checkbox" name="SelectedRegPeriod" value="RU95">Россия после 1994г</label>
+                        </div>
+                   </div>
+                    <div class="string-box">
+                        <label for="AuditedDepartment_BranchId">Страна публикации</label>
+                        <div class="radio-group">
+                            <label> <input type="checkbox" name="SelectedReg" value="SU">SU</label>
+                            <label> <input type="checkbox" name="SelectedReg" value="RU">RU</label>
+                        </div>
+                        </div>
+                </div>
+                    <div class="btn-block">
+                        <button type="submit" value="clean" onclick="clearForm(event); return false;">Очистить</button>
+                        <button  type="submit" value="search" onclick="submitForm(event)">Показать результаты поиска</button>
+                    </div>
+                 </form>
+                 <div class="result" id="result">
+                    <button type="submit" value="back" id="back">Назад</button>
+                    <h2>Результаты поиска</h2>
+                    <ul class="pagination" id="pagination"></ul>
+                    <div id="content"></div>
+                    <ul class="pagination" id="pagination"></ul>
+                 </div>
+            </div>
+        </main>
+    </div>
+ <script src="/static/js/search.js"></script>
+</body>
+</html>

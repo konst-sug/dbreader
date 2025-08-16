@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <title>История</title>
+    <link rel="stylesheet" href="/static/css/web.css">
+
+</head>
+
+<body>
+    <div class="container-side">
+        <!-- Сайдбар -->
+        <aside>
+            <img src="/static/images/logo-white.png" alt="Логотип" class="logo">
+            <!-- Подставьте путь к вашему изображению -->
+            <nav>
+                <ul>
+                    <li><a href="/">
+                            <img src="/static/images/159619.svg" alt="Логотип" class="menu-logo">Главная</a></li>
+                    <li><a href="/search">
+                            <img src="/static/images/1093184.svg" alt="Логотип" class="menu-logo">Патенты</a></li>
+                    <li><a href="/config">
+                            <img src="/static/images/155130.svg" alt="Логотип" class="menu-logo">Настройки</a></li>
+                    <li style=" background-color: #3e518a;"><a href="/history">
+                            <img src="/static/images/7090.svg" alt="Логотип" class="menu-logo">История</a></li>
+                    <li><a href="#"></a></li>
+                    <li><a href="/"> </a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Основная область контента -->
+        <main>
+            <div id="notification" class="notification">Данные успешно получены!</div>
+            <h1>История</h1>
+            <div class="table-content">
+                <h4>История поисков</h4>
+                <form action="" method="post">
+                    <label for="dropdown1">Выберите вариант:</label><br />
+                     <select id="select1" name="select1">
+                {% for opt in options.options1 %}
+                    <option value="{{ opt.value }}">{{ opt.label }}</option>
+                {% endfor %}
+                    </select>
+                </form>
+
+                <h4>История просмотров</h4>
+                <form action="" method="post">
+                    <label for="dropdown2">Выберите вариант:</label><br />
+                    <select id="select2" name="select2">
+                {% for opt in options.options2 %}
+                    <option value="{{ opt.value }}">{{ opt.label }}</option>
+                {% endfor %}
+                    </select>
+                </form>
+
+            </div>
+            <button type="submit" style="margin-left: 0px;">Сохранить</button>
+    </div>
+
+
+
+
+    </main>
+    </div>
+    <script src="/static/js/search.js"></script>
+</body>
+
+</html>
